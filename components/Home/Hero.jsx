@@ -1,7 +1,10 @@
-import { Button, Container } from '@mantine/core'
+import { Box } from '@mantine/core'
 import { useNotifications } from '@mantine/notifications'
+import Card from '../util/Card'
+import CardFeatured from '../util/CardFeatured'
 
-function Hero() {
+function Hero(props) {
+  const { posts } = props
   const { showNotification } = useNotifications()
 
   const clickMeNotification = () => {
@@ -13,9 +16,19 @@ function Hero() {
 
   return (
     <>
-      <Container padding='lg' size='1440px'>
-        <Button onClick={clickMeNotification}>Click me :)</Button>
-      </Container>
+      <Box
+        sx={(theme) => ({
+          marginLeft: '16.9rem',
+          marginTop: '6.3rem',
+          [theme.fn.smallerThan('md')]: {
+            marginLeft: '0',
+          },
+        })}
+        px='md'
+      >
+        <CardFeatured posts={posts} />
+        <Card posts={posts} />
+      </Box>
     </>
   )
 }

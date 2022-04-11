@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { MantineProvider, ColorSchemeProvider, Global } from '@mantine/core'
+import { MantineProvider, ColorSchemeProvider } from '@mantine/core'
 import GlobalStyles from './GlobalStyles'
 import { NotificationsProvider } from '@mantine/notifications'
 
@@ -16,9 +16,9 @@ const lightPrimary = [
   '#123E54',
 ]
 const lightColors = {
-  lightPrimary: '#2D9BD2',
+  lightPrimary: '#F8F9FA',
   lightSecondary: '#ff0691',
-  lightBackground: '#EAF5FA',
+  lightBackground: '#FFFFFF',
 }
 
 const darkPrimary = [
@@ -34,9 +34,9 @@ const darkPrimary = [
   '#222844',
 ]
 const darkColors = {
-  darkPrimary: '#3E497A',
+  darkPrimary: '#101113',
   darkSecondary: '#fca311',
-  darkBackground: '#21325E',
+  darkBackground: '#1A1B1E',
 }
 
 function Theme(props) {

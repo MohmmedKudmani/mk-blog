@@ -8,65 +8,39 @@ const useStyles = createStyles((theme) => {
   const lightSecondary = theme.other.lightSecondary
 
   return {
-    navbarContainer: {
-      display: 'flex',
-      alignItems: 'center',
-      height: '100%',
-    },
-
     linkClass: {
       '&:hover': {
         opacity: '0.9',
       },
       fontWeight: 500,
       color: dark ? theme.white : theme.black,
+      display: 'block',
+      padding: '0.5rem 1rem',
     },
 
     linkActiveClass: {
       color: dark ? darkSecondary : lightSecondary,
+      borderRadius: '0.5rem',
+      backgroundColor:
+        theme.colorScheme === 'dark'
+          ? theme.fn.rgba(theme.colors[theme.primaryColor][8], 0.25)
+          : theme.colors[theme.primaryColor][0],
+    },
+    title: {
+      padding: '0.6rem 0',
+      margin: '0.4rem 0.3rem 0.7rem 0.3rem',
+      borderBottom: '0.5px #333 solid',
     },
 
-    toggleDarkMode: {
-      color: dark ? darkSecondary : lightSecondary,
-      backgroundColor: dark ? darkPrimary : lightPrimary,
-
-      [theme.fn.smallerThan('xs')]: {
-        display: 'none',
-      },
-
-      '&:hover': {
-        backgroundColor: theme.fn.darken(
-          dark ? darkPrimary : lightPrimary,
-          0.1
-        ),
-      },
-    },
-
-    menuToggleDarkMode: {
-      color: dark ? darkSecondary : lightSecondary,
-      backgroundColor: dark ? darkPrimary : lightPrimary,
-      position: 'absolute',
-      right: '10px',
-      top: '10px',
-      '&:hover': {
-        backgroundColor: !dark && theme.fn.lighten(lightSecondary, 0.5),
-      },
-    },
-
-    burger: {
-      [theme.fn.largerThan('xs')]: {
-        display: 'none',
-      },
-      zIndex: 999,
-      marginLeft: 'auto',
-    },
-
-    menuModal: {
-      '.mantine-Modal-modal': {
-        top: 20,
-        backgroundColor: dark ? darkPrimary : lightPrimary,
-        padding: '1rem',
-      },
+    footer: {
+      borderTop: `1px solid ${
+        theme.colorScheme === 'dark'
+          ? theme.colors.dark[4]
+          : theme.colors.gray[3]
+      }`,
+      paddingTop: '1rem',
+      display: 'flex',
+      alignItems: 'center',
     },
   }
 })

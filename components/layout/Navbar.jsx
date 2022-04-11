@@ -1,115 +1,115 @@
-import { useState } from 'react'
 import {
-  Header,
+  Navbar as MantineNavbar,
   Text,
-  ActionIcon,
-  useMantineColorScheme,
-  Modal,
-  Container,
-  Burger,
+  Box,
+  Avatar,
   Group,
+  Button,
+  Popover,
 } from '@mantine/core'
 import Link from 'next/link'
-import useStyle from './navbarStyle'
-import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
 import { useRouter } from 'next/router'
-import { useBooleanToggle, useMediaQuery } from '@mantine/hooks'
+import useStyle from './navbarStyle'
+import { useState } from 'react'
+import { signIn, signOut, useSession } from 'next-auth/react'
+import GoogleIcon from '../../public/svg/GoogleIcon'
 
-function Navbar() {
+function Navbar(props) {
+  const { isOpened } = props
   const { classes, cx } = useStyle()
-
-  const { colorScheme, toggleColorScheme } = useMantineColorScheme()
-
-  const [isOpened, setOpened] = useBooleanToggle(false)
-
-  const dark = colorScheme === 'dark'
-
-  const matchXs = useMediaQuery('(min-width: 576px)')
+  const { data: session, status } = useSession()
+  const [opened, setOpened] = useState(false)
 
   return (
-    <>
-      <Header
-        height={80}
-        sx={{
-          border: 0,
-          backgroundColor: 'transparent',
-        }}
-      >
-        <Container
-          padding='lg'
-          size='1440px'
-          className={classes.navbarContainer}
-        >
-          <Text mr='lg'>Logo</Text>
-          {matchXs && (
-            <Links
-              linkClass={classes.linkClass}
-              linkActiveClass={classes.linkActiveClass}
-              cx={cx}
-            />
-          )}
-          <LightDarkMode
-            dark={dark}
-            toggleColorScheme={toggleColorScheme}
-            className={classes.toggleDarkMode}
-          />
-          <Burger
-            opened={isOpened}
-            onClick={() => setOpened()}
-            className={classes.burger}
-          />
-        </Container>
-      </Header>
-      <Modal
-        opened={isOpened}
-        onClose={() => setOpened()}
-        className={classes.menuModal}
-        hideCloseButton
-      >
-        <LightDarkMode
-          dark={dark}
-          toggleColorScheme={toggleColorScheme}
-          className={classes.menuToggleDarkMode}
-        />
+    <MantineNavbar
+      p='md'
+      sx={(theme) => ({
+        [theme.fn.smallerThan('sm')]: {
+          top: '5rem',
+        },
+        padding: '0 0.8rem',
+        backgroundColor:
+          theme.colorScheme === 'dark'
+            ? theme.other.darkPrimary
+            : theme.other.lightPrimary,
+      })}
+      // Breakpoint at which navbar will be hidden if hidden prop is true
+      hiddenBreakpoint='md'
+      // Hides navbar when viewport size is less than value specified in hiddenBreakpoint
+      hidden={!isOpened}
+      // when viewport size is less than theme.breakpoints.sm navbar width is 100%
+      // viewport size > theme.breakpoints.sm – width is 300px
+      // viewport size > theme.breakpoints.lg – width is 400px
+      width={{ sm: 270, md: 270 }}
+    >
+      <MantineNavbar.Section grow>
+        <Text className={classes.title}>Categories</Text>
         <Links
           linkClass={classes.linkClass}
           linkActiveClass={classes.linkActiveClass}
           cx={cx}
-          isMenu={true}
         />
-      </Modal>
-    </>
-  )
-}
+      </MantineNavbar.Section>
 
-function LightDarkMode({ className, toggleColorScheme, dark }) {
-  return (
-    <ActionIcon
-      variant='filled'
-      size='lg'
-      radius='lg'
-      onClick={() => toggleColorScheme()}
-      title='Toggle Dark Mode'
-      className={className}
-    >
-      {dark ? (
-        <SunIcon style={{ width: 18, height: 18 }} />
-      ) : (
-        <MoonIcon style={{ width: 18, height: 18 }} />
-      )}
-    </ActionIcon>
+      <MantineNavbar.Section className={classes.footer}>
+        {status === 'authenticated' ? (
+          <>
+            <Popover
+              target={
+                <Avatar
+                  onClick={() => setOpened((o) => !o)}
+                  sx={{
+                    cursor: 'pointer',
+                    '.mantine-tzt201': {
+                      marginLeft: '1rem !important',
+                    },
+                  }}
+                  src={session?.user.image}
+                  alt='avatar'
+                  mr='xs'
+                  radius='xl'
+                  size='md'
+                />
+              }
+              width={270}
+              position='top'
+              withArrow
+              opened={opened}
+              onClose={() => setOpened(false)}
+            >
+              <Button onClick={() => signOut('google')} fullWidth>
+                Sign Out
+              </Button>
+            </Popover>
+            <Group direction='column' spacing='-0.1rem'>
+              <Text size='sm'>{session.user.name}</Text>
+              <Text size='sm'>{session.user.email}</Text>
+            </Group>
+          </>
+        ) : (
+          <Button
+            leftIcon={<GoogleIcon />}
+            fullWidth
+            onClick={() => signIn('google')}
+          >
+            Sign In With Google
+          </Button>
+        )}
+      </MantineNavbar.Section>
+    </MantineNavbar>
   )
 }
 
 function Links(props) {
-  const { linkActiveClass, cx, linkClass, isMenu } = props
+  const { linkActiveClass, cx, linkClass } = props
 
   const router = useRouter()
 
   const links = [
     { id: 0, label: 'Home', href: '/' },
-    { id: 1, label: 'Hello', href: '/hello' },
-    { id: 2, label: 'World', href: '/world' },
+    { id: 1, label: 'Web Development', href: '/hello' },
+    { id: 2, label: 'Gaming', href: '/world' },
+    { id: 3, label: 'Technology', href: '/world' },
   ]
 
   const currentTab = () => {
@@ -121,12 +121,7 @@ function Links(props) {
   const [active, setActive] = useState(currentTab)
 
   return (
-    <Group
-      spacing='lg'
-      mr='auto'
-      position='center'
-      direction={isMenu ? 'column' : 'row'}
-    >
+    <Box>
       {links.map((link) => (
         <Link passHref key={link.id} href={link.href}>
           <Text
@@ -142,7 +137,7 @@ function Links(props) {
           </Text>
         </Link>
       ))}
-    </Group>
+    </Box>
   )
 }
 
