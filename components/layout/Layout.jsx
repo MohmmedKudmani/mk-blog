@@ -1,5 +1,4 @@
 import Header from './Header'
-import Footer from './Footer'
 import Theme from '../Theme'
 import { AppShell } from '@mantine/core/'
 import Navbar from './Navbar'
@@ -11,7 +10,6 @@ function Layout(props) {
 
   const onOpenedHandler = () => {
     setOpened((o) => !o)
-    console.log('works')
   }
 
   return (

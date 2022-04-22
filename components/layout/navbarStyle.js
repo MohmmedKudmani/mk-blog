@@ -38,7 +38,7 @@ const useStyles = createStyles((theme) => {
           ? theme.colors.dark[4]
           : theme.colors.gray[3]
       }`,
-      paddingTop: '1rem',
+      paddingTop: '0.5rem',
       display: 'flex',
       alignItems: 'center',
     },

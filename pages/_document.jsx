@@ -1,22 +1,8 @@
 import Document from 'next/document'
-import { ServerStyles, createStylesServer } from '@mantine/next'
+import { createGetInitialProps } from '@mantine/next'
 
-const stylesServer = createStylesServer()
+const getInitialProps = createGetInitialProps()
 
-class _Document extends Document {
-  static async getStaticProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-
-    return {
-      ...initialProps,
-      styles: (
-        <>
-          {initialProps.styles}
-          <ServerStyles html={initialProps.html} server={stylesServer} />
-        </>
-      ),
-    }
-  }
+export default class _Document extends Document {
+  static getInitialProps = getInitialProps
 }
-
-export default _Document

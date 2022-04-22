@@ -1,16 +1,12 @@
-import {
-  Center,
-  Text,
-  Box,
-  BackgroundImage,
-  Avatar,
-  ActionIcon,
-} from '@mantine/core'
+import { Center, Text, Box, BackgroundImage, ActionIcon } from '@mantine/core'
 import Carousel from 'react-elastic-carousel'
-import { ArrowLeftIcon, ArrowRightIcon } from '@radix-ui/react-icons'
+import { IconArrowLeft, IconArrowRight } from '@tabler/icons'
+import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 function CardFeatured(props) {
   const { posts } = props
+  const router = useRouter()
 
   const breakPoints = [
     { width: 350, itemsToShow: 1 },
@@ -33,37 +29,49 @@ function CardFeatured(props) {
           <ActionIcon
             onClick={onClick}
             disabled={isEdge}
-            sx={{
+            sx={(theme) => ({
               position: 'relative',
               top: '4.7rem',
               cursor: 'pointer',
-            }}
+              color:
+                theme.colorScheme === 'dark'
+                  ? theme.other.darkSecondary
+                  : theme.other.lightSecondary,
+              backgroundColor: theme.colorScheme === 'light' && '#dedede',
+            })}
             radius='xl'
+            variant='filled'
           >
-            <ArrowLeftIcon />
+            <IconArrowLeft size={18} />
           </ActionIcon>
         ) : (
           <ActionIcon
             onClick={onClick}
             disabled={isEdge}
-            sx={{
+            variant='filled'
+            sx={(theme) => ({
               position: 'relative',
               top: '4.7rem',
               cursor: 'pointer',
-            }}
+              color:
+                theme.colorScheme === 'dark'
+                  ? theme.other.darkSecondary
+                  : theme.other.lightSecondary,
+              backgroundColor: theme.colorScheme === 'light' && '#dedede',
+            })}
             radius='xl'
           >
-            <ArrowRightIcon />
+            <IconArrowRight size={18} />
           </ActionIcon>
         )
       }
     >
       {posts?.map((post) => {
         return (
-          <Box key={post.data.title} sx={{ maxWidth: 300 }} mx='auto'>
+          <Box key={post.data.title} sx={{ width: '100%' }}>
             <BackgroundImage
               sx={{
-                width: '230px',
+                width: '93%',
                 height: '175px',
                 objectFit: 'cover',
                 display: 'flex',
@@ -75,6 +83,8 @@ function CardFeatured(props) {
               }}
               src={post.data.image}
               radius='sm'
+              mx='auto'
+              onClick={() => router.push(`/post/${post.slug}`)}
             >
               <Center>
                 <Text color='#fff'>{post.data.date}</Text>
@@ -83,8 +93,14 @@ function CardFeatured(props) {
                 <Text color='#fff'>{post.data.title}</Text>
               </Center>
               <Center>
-                <Avatar mr='xs' size='sm' src={post?.data.avatar} radius='xl' />
-                <Text size='sm' color='#fff'>
+                <Image
+                  width={27}
+                  height={27}
+                  alt='user'
+                  src={post?.data.avatar}
+                  className='nextImageAvatar'
+                />
+                <Text ml='xs' size='sm' color='#fff'>
                   {post.data.userName}
                 </Text>
               </Center>

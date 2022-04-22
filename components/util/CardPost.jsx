@@ -6,13 +6,8 @@ function CardPost(props) {
   const post = posts.filter((post) => post.postsSlug === slug)
   return (
     <>
-      <Card
-        sx={{
-          width: '70%',
-        }}
-        radius='md'
-      >
-        <Card.Section p='md'>
+      <Card shadow='xl' radius='md'>
+        <Card.Section p='sm'>
           <Image
             src={post[0].data.image}
             layout='responsive'

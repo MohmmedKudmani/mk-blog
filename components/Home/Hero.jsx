@@ -1,18 +1,9 @@
-import { Box } from '@mantine/core'
-import { useNotifications } from '@mantine/notifications'
+import { Box, Container } from '@mantine/core'
 import Card from '../util/Card'
 import CardFeatured from '../util/CardFeatured'
 
 function Hero(props) {
   const { posts } = props
-  const { showNotification } = useNotifications()
-
-  const clickMeNotification = () => {
-    return showNotification({
-      title: 'Hello World',
-      message: 'Welcome To My Boilerplate',
-    })
-  }
 
   return (
     <>
@@ -24,10 +15,11 @@ function Hero(props) {
             marginLeft: '0',
           },
         })}
-        px='md'
       >
-        <CardFeatured posts={posts} />
-        <Card posts={posts} />
+        <Container size='1550px'>
+          <CardFeatured posts={posts} />
+          <Card posts={posts} />
+        </Container>
       </Box>
     </>
   )

@@ -30,13 +30,10 @@ const useStyles = createStyles((theme) => {
 
     toggleDarkMode: {
       color: dark ? darkSecondary : lightSecondary,
-      backgroundColor: dark ? darkPrimary : lightPrimary,
+      backgroundColor: dark ? darkPrimary : '#D4D4D4',
 
       '&:hover': {
-        backgroundColor: theme.fn.darken(
-          dark ? darkPrimary : lightPrimary,
-          0.1
-        ),
+        backgroundColor: theme.fn.darken(dark ? darkPrimary : '#D4D4D4', 0.1),
       },
     },
 

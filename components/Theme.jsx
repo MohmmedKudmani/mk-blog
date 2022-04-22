@@ -1,7 +1,8 @@
-import { useState } from 'react'
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core'
 import GlobalStyles from './GlobalStyles'
 import { NotificationsProvider } from '@mantine/notifications'
+import NextNProgress from 'nextjs-progressbar'
+import { useLocalStorage } from '@mantine/hooks'
 
 const lightPrimary = [
   '#EAF5FB',
@@ -40,11 +41,13 @@ const darkColors = {
 }
 
 function Theme(props) {
-  const [colorScheme, setColorScheme] = useState('dark')
+  const [colorScheme, setColorScheme] = useLocalStorage({
+    key: 'color-scheme',
+    defaultValue: 'dark',
+  })
 
-  const toggleColorScheme = (value) => {
-    setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'))
-  }
+  const toggleColorScheme = () =>
+    setColorScheme((current) => (current === 'dark' ? 'light' : 'dark'))
 
   const dark = colorScheme === 'dark'
 
@@ -80,6 +83,11 @@ function Theme(props) {
       >
         <NotificationsProvider position='bottom-left'>
           <GlobalStyles dark={dark} />
+          <NextNProgress
+            color={dark ? darkColors.darkSecondary : lightColors.lightSecondary}
+            height={2}
+            options={{ showSpinner: false }}
+          />
           {props.children}
         </NotificationsProvider>
       </MantineProvider>

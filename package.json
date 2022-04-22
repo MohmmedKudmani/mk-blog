@@ -14,16 +14,19 @@
     "@mantine/hooks": "^4.1.1",
     "@mantine/next": "^4.1.1",
     "@mantine/notifications": "^4.1.1",
-    "@next-auth/mongodb-adapter": "^1.0.3",
-    "@radix-ui/react-icons": "latest",
+    "@tabler/icons": "^1.65.0",
     "axios": "latest",
+    "dayjs": "^1.11.1",
     "gray-matter": "^4.0.3",
-    "mongodb": "^4.5.0",
+    "mongoose": "^6.3.0",
     "next": "latest",
     "next-auth": "^4.3.1",
+    "nextjs-progressbar": "^0.0.14",
     "react": "latest",
     "react-dom": "latest",
-    "react-elastic-carousel": "^0.11.5"
+    "react-elastic-carousel": "^0.11.5",
+    "react-query": "^3.35.0",
+    "sharp": "^0.30.3"
   },
   "devDependencies": {
     "eslint": "latest",

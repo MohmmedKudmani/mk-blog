@@ -1,3 +1,12 @@
 .nextImage {
   border-radius: 0.7rem;
 }
+
+.nextImageAvatar {
+  border-radius: 50%;
+}
+
+.nextImageAvatarUser {
+  cursor: pointer;
+  border-radius: 50%;
+}

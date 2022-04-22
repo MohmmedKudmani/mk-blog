@@ -7,7 +7,7 @@ import {
   Burger,
 } from '@mantine/core'
 import useStyle from './headerStyle'
-import { SunIcon, MoonIcon } from '@radix-ui/react-icons'
+import { IconSun, IconMoon } from '@tabler/icons'
 
 function Header(props) {
   const { classes } = useStyle()
@@ -32,7 +32,7 @@ function Header(props) {
             onClick={onOpenedHandler}
             className={classes.burger}
           />
-          <Text>Logo</Text>
+          <Text mt='5px'>Mk-Blog</Text>
           <LightDarkMode
             dark={dark}
             toggleColorScheme={toggleColorScheme}
@@ -54,11 +54,7 @@ function LightDarkMode({ className, toggleColorScheme, dark }) {
       title='Toggle Dark Mode'
       className={className}
     >
-      {dark ? (
-        <SunIcon style={{ width: 18, height: 18 }} />
-      ) : (
-        <MoonIcon style={{ width: 18, height: 18 }} />
-      )}
+      {dark ? <IconSun size={18} /> : <IconMoon size={18} />}
     </ActionIcon>
   )
 }
