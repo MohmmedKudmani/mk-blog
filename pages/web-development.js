@@ -30,9 +30,9 @@ export const getStaticProps = async (ctx) => {
       'utf-8'
     )
 
-    const { data } = matter(markDownWrite)
+    const { data, content } = matter(markDownWrite)
 
-    return { slug, data }
+    return { slug, data, content }
   })
 
   return {

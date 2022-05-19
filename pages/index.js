@@ -30,9 +30,9 @@ export const getStaticProps = async (ctx) => {
       'utf-8'
     )
 
-    const { data } = matter(markDownWrite)
+    const { data, content } = matter(markDownWrite)
 
-    return { slug, data }
+    return { slug, data, content }
   })
 
   const postsGaming = filesGaming.map((fileName) => {
@@ -43,9 +43,9 @@ export const getStaticProps = async (ctx) => {
       'utf-8'
     )
 
-    const { data } = matter(markDownWrite)
+    const { data, content } = matter(markDownWrite)
 
-    return { slug, data }
+    return { slug, data, content }
   })
 
   const postsTechnology = filesTechnology.map((fileName) => {
@@ -56,9 +56,9 @@ export const getStaticProps = async (ctx) => {
       'utf-8'
     )
 
-    const { data } = matter(markDownWrite)
+    const { data, content } = matter(markDownWrite)
 
-    return { slug, data }
+    return { slug, data, content }
   })
 
   const allPosts = [...postsWeb, ...postsGaming, ...postsTechnology]

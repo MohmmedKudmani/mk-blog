@@ -72,12 +72,10 @@ function Card(props) {
               width: '80%',
             }}
             mx='auto'
-            size='sm'
             align='center'
+            lineClamp={2}
           >
-            With Fjord Tours you can explore more of the magical fjord
-            landscapes with tours and activities on and around the fjords of
-            Norway
+            {post.content}
           </Text>
           <Button
             sx={{

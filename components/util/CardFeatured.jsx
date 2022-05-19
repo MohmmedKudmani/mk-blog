@@ -66,7 +66,7 @@ function CardFeatured(props) {
     >
       {posts?.map((post) => {
         return (
-          <Box key={post.data.title} sx={{ width: '100%' }}>
+          <Box my='sm' key={post.data.title} sx={{ width: '100%' }}>
             <BackgroundImage
               sx={{
                 width: '93%',
