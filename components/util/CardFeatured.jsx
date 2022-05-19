@@ -14,12 +14,10 @@ function CardFeatured(props) {
     { width: 700, itemsToShow: 3 },
     { width: 950, itemsToShow: 4 },
     { width: 1250, itemsToShow: 5 },
-    { width: 1350, itemsToShow: 6 },
   ]
 
   return (
     <Carousel
-      enableAutoPlay
       autoPlaySpeed={1500}
       breakPoints={breakPoints}
       itemsToShow={4}
@@ -80,19 +78,42 @@ function CardFeatured(props) {
                 flexDirection: 'column',
                 padding: '0 0.5rem',
                 cursor: 'pointer',
+                position: 'relative',
+                borderRadius: '0.5rem',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  left: 0,
+                  right: 0,
+                  top: 0,
+                  bottom: 0,
+                  background: 'rgba(0,0,0,.5)',
+                  borderRadius: '0.5rem',
+                },
               }}
               src={post.data.image}
-              radius='sm'
               mx='auto'
               onClick={() => router.push(`/post/${post.slug}`)}
             >
-              <Center>
+              <Center
+                sx={{
+                  zIndex: 1,
+                }}
+              >
                 <Text color='#fff'>{post.data.date}</Text>
               </Center>
-              <Center>
+              <Center
+                sx={{
+                  zIndex: 1,
+                }}
+              >
                 <Text color='#fff'>{post.data.title}</Text>
               </Center>
-              <Center>
+              <Center
+                sx={{
+                  zIndex: 1,
+                }}
+              >
                 <Image
                   width={27}
                   height={27}

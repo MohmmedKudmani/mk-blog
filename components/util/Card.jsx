@@ -20,7 +20,10 @@ function Card(props) {
     <SimpleGrid mt='lg' cols={matchMd ? 1 : 2}>
       {posts.map((post) => (
         <MantineCard key={post.data.title} shadow='xl' p='sm' radius='lg'>
-          <MantineCard.Section p='sm'>
+          <MantineCard.Section
+            onClick={() => router.push(`/post/${post.slug}`)}
+            mb='1rem'
+          >
             <Image
               src={post.data.image}
               layout='responsive'

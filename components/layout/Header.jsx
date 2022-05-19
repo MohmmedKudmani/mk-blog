@@ -1,6 +1,5 @@
 import {
   Header as MantineHeader,
-  Text,
   ActionIcon,
   useMantineColorScheme,
   Box,
@@ -8,6 +7,9 @@ import {
 } from '@mantine/core'
 import useStyle from './headerStyle'
 import { IconSun, IconMoon } from '@tabler/icons'
+import logoDark from '../../public/svg/mk-logo-dark.svg'
+import logoLight from '../../public/svg/mk-logo-light.svg'
+import Image from 'next/image'
 
 function Header(props) {
   const { classes } = useStyle()
@@ -32,7 +34,12 @@ function Header(props) {
             onClick={onOpenedHandler}
             className={classes.burger}
           />
-          <Text mt='5px'>Mk-Blog</Text>
+          <Image
+            width={50}
+            height={50}
+            alt='logo'
+            src={dark ? logoDark : logoLight}
+          />
           <LightDarkMode
             dark={dark}
             toggleColorScheme={toggleColorScheme}

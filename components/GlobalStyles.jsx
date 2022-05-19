@@ -1,22 +1,29 @@
 import { Global } from '@mantine/core'
 
-function GlobalStyles(props) {
-  const { dark } = props
-
+function GlobalStyles({ isOpened }) {
   return (
     <Global
       styles={(theme) => ({
-        '*, *::before, *::after': {
-          boxSizing: 'border-box',
-          margin: '0',
-          padding: '0',
+        body: {
+          overflow: isOpened ? 'hidden' : 'overlay',
+        },
+        '::-webkit-scrollbar': {
+          width: '15px',
+          position: 'fixed',
         },
 
-        body: {
-          backgroundColor: dark
-            ? theme.other.darkBackground
-            : theme.other.lightBackground,
-          color: dark ? '#fff' : '#000',
+        '::-webkit-scrollbar-thumb': {
+          borderRadius: '8px',
+          border: '4px solid transparent',
+          backgroundClip: 'content-box',
+          backgroundColor: theme.colorScheme === 'dark' ? '#fca311' : '#ff0691',
+        },
+
+        '::-webkit-scrollbar-thumb:hover': {
+          backgroundColor: theme.fn.rgba(
+            theme.colorScheme === 'dark' ? '#fca311' : '#ff0691',
+            0.7
+          ),
         },
       })}
     />

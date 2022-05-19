@@ -16,7 +16,7 @@ function Hero(props) {
           },
         })}
       >
-        <Container size='1550px'>
+        <Container px='xl' size='1550px'>
           <CardFeatured posts={posts} />
           <Card posts={posts} />
         </Container>

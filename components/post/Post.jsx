@@ -73,7 +73,7 @@ function Post(props) {
           },
         })}
       >
-        <Container size='1550px'>
+        <Container px='xl' size='1550px'>
           <Group
             grow
             noWrap

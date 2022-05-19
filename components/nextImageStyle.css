@@ -1,5 +1,10 @@
 .nextImage {
-  border-radius: 0.7rem;
+  cursor: pointer;
+}
+
+.nextImage:hover {
+  transform: scale(1.05);
+  transition: all 300ms ease;
 }
 
 .nextImageAvatar {

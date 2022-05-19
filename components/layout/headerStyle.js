@@ -13,7 +13,7 @@ const useStyles = createStyles((theme) => {
       alignItems: 'center',
       justifyContent: 'space-between',
       height: '100%',
-      padding: '0 20px',
+      padding: '0 30px',
     },
 
     linkClass: {

@@ -1,12 +1,16 @@
 import { Box, Group, Card, Text } from '@mantine/core'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
 
 function RelatedPosts(props) {
   const { posts, slug, matchLg } = props
   const postSelected = posts.filter((post) => post.postsSlug === slug)
   const postsRelated = posts.filter(
-    (post) => post.data.category === postSelected[0].data.category
+    (post) =>
+      post.data.category === postSelected[0].data.category &&
+      post.postsSlug !== slug
   )
+  const router = useRouter()
 
   return (
     <Card
@@ -30,7 +34,17 @@ function RelatedPosts(props) {
         </Text>
       </Card.Section>
       {postsRelated.map((postRelated) => (
-        <Group mb='lg' key={postRelated.data.title}>
+        <Group
+          sx={{
+            '&:active': {
+              transform: 'scale(.98)',
+            },
+            cursor: 'pointer',
+          }}
+          mb='lg'
+          onClick={() => router.push(`/post/${postRelated.postsSlug}`)}
+          key={postRelated.data.title}
+        >
           <Image
             alt='user'
             width={45}

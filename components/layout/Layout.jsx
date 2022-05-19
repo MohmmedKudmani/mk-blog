@@ -2,6 +2,8 @@ import Header from './Header'
 import Theme from '../Theme'
 import { AppShell } from '@mantine/core/'
 import Navbar from './Navbar'
+import GlobalStyles from '../GlobalStyles'
+
 import { useState } from 'react'
 
 function Layout(props) {
@@ -24,10 +26,11 @@ function Layout(props) {
           <Header isOpened={isOpened} onOpenedHandler={onOpenedHandler} />
         }
         fixed
-        navbar={<Navbar isOpened={isOpened} />}
+        navbar={<Navbar isOpened={isOpened} setIsOpened={setOpened} />}
       >
         {children}
       </AppShell>
+      <GlobalStyles isOpened={isOpened} />
     </Theme>
   )
 }

@@ -13,7 +13,7 @@ import Image from 'next/image'
 import NavLinks from './NavLinks'
 
 function Navbar(props) {
-  const { isOpened } = props
+  const { isOpened, setIsOpened } = props
   const { classes, cx } = useStyle()
   const { data: session, status } = useSession()
   const [opened, setOpened] = useState(false)
@@ -46,6 +46,7 @@ function Navbar(props) {
           linkClass={classes.linkClass}
           linkActiveClass={classes.linkActiveClass}
           cx={cx}
+          setIsOpened={setIsOpened}
         />
       </MantineNavbar.Section>
 

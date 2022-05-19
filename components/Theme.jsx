@@ -1,5 +1,4 @@
 import { MantineProvider, ColorSchemeProvider } from '@mantine/core'
-import GlobalStyles from './GlobalStyles'
 import { NotificationsProvider } from '@mantine/notifications'
 import NextNProgress from 'nextjs-progressbar'
 import { useLocalStorage } from '@mantine/hooks'
@@ -82,7 +81,6 @@ function Theme(props) {
         }}
       >
         <NotificationsProvider position='bottom-left'>
-          <GlobalStyles dark={dark} />
           <NextNProgress
             color={dark ? darkColors.darkSecondary : lightColors.lightSecondary}
             height={2}
