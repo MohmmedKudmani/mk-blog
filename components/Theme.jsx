@@ -76,7 +76,7 @@ function Theme(props) {
             xl: '2.5rem',
           },
           shadows: {
-            xl: '0px 0px 7px 2px rgba(0,0,0,0.1)',
+            xl: '0px 0px 8px 2px rgba(0,0,0,0.1)',
           },
         }}
       >
