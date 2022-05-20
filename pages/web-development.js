@@ -7,8 +7,6 @@ import Head from 'next/head'
 function GamingPage(props) {
   const { posts } = props
 
-  console.log(posts)
-
   return (
     <>
       <Head>

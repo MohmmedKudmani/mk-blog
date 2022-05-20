@@ -7,8 +7,6 @@ import Head from 'next/head'
 function GamingPage(props) {
   const { posts } = props
 
-  console.log(posts)
-
   return (
     <>
       <Head>
@@ -24,8 +22,6 @@ export const getStaticProps = async (ctx) => {
 
   const posts = files.map((fileName) => {
     const slug = fileName.replace('.md', '')
-
-    console.log(fileName)
 
     const markDownWrite = fs.readFileSync(
       path.join('posts-tech', fileName),
