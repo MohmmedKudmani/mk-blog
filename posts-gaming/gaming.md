@@ -2,7 +2,7 @@
 title: 'Back 4 Blood'
 featured: true
 date: 'April 2 2022'
-image: '/images/posts-gaming/back-4-blood.jfif'
+image: '/images/posts-gaming/back-4-blood.jpg'
 userName: 'Mohammed Kudmani'
 avatar: 'https://lh3.googleusercontent.com/a-/AOh14GiTqYo0uv6lyG5HTO_r00RLkJJSbOHMKFjT2kLd=s96-c'
 category: 'Gaming'
