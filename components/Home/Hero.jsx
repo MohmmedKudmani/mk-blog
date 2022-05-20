@@ -1,6 +1,9 @@
 import { Box, Container } from '@mantine/core'
 import Card from '../util/Card'
-import CardFeatured from '../util/CardFeatured'
+import dynamic from 'next/dynamic'
+const CardFeatured = dynamic(() => import('../util/CardFeatured'), {
+  loading: () => <p>loading...</p>,
+})
 
 function Hero(props) {
   const { posts } = props
