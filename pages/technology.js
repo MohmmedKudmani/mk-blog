@@ -1,4 +1,4 @@
-import Hero from '../components/home/Hero'
+import Hero from '../components/Home/Hero'
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
