@@ -11,7 +11,7 @@ async function handler(req, res) {
     })
   }
 
-  const comments = await Comment.find({ path: req.headers.slug })
+  const comments = await Comment.find()
 
   res.status(200).json({ message: 'Your Comments is here', comments: comments })
 }
