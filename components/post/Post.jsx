@@ -9,8 +9,8 @@ import { showNotification } from '@mantine/notifications'
 import { useQuery } from 'react-query'
 import { IconCheck, IconX } from '@tabler/icons'
 import RelatedPosts from './RelatedPosts'
-// import Comments from './Comments'
-// import CommentModal from './CommentModal'
+import Comments from './Comments'
+import CommentModal from './CommentModal'
 
 function Post(props) {
   const { posts, slug } = props
@@ -87,7 +87,7 @@ function Post(props) {
               }}
             >
               <RelatedPosts matchLg={matchLg} posts={posts} slug={slug} />
-              {/* <Comments
+              <Comments
                 comments={data?.comments}
                 queryStatus={queryStatus}
                 matchLg={matchLg}
@@ -95,12 +95,12 @@ function Post(props) {
                 refetch={refetch}
                 session={session}
                 setSelectedItemReplay={setSelectedItemReplay}
-              /> */}
+              />
             </Box>
           </Group>
         </Container>
       </Box>
-      {/* <CommentModal
+      <CommentModal
         commentHandler={commentHandler}
         handlers={handlers}
         opened={opened}
@@ -108,7 +108,7 @@ function Post(props) {
         session={session}
         selectedItemReplay={selectedItemReplay}
         setSelectedItemReplay={setSelectedItemReplay}
-      /> */}
+      />
     </>
   )
 }
