@@ -4,10 +4,16 @@ import Card from '../util/Card'
 // const CardFeatured = dynamic(() => import('../util/CardFeatured'), {
 //   loading: () => <p>loading...</p>,
 // })
+import { getComment2 } from '../../lib/requests'
 
 function Hero(props) {
   const { posts } = props
 
+  async function data() {
+    const data = await getComment2()
+    console.log(data)
+  }
+  data()
   return (
     <>
       <Box

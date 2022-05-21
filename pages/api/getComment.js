@@ -1,7 +1,8 @@
 import dbConnect from '../../lib/dbConnect'
 import Comment from '../../models/commentModel'
+import { connection } from 'mongoose'
 
-async function handler(req, res) {
+export default async function handler(req, res) {
   const { method } = req
 
   await dbConnect()
@@ -17,5 +18,3 @@ async function handler(req, res) {
 
   res.status(200).json({ message: 'Your Comments is here', comments: comments })
 }
-
-export default handler
