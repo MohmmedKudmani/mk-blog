@@ -22,7 +22,7 @@ function Post(props) {
     data,
     status: queryStatus,
     refetch,
-  } = useQuery(['comments', slug], getComment)
+  } = useQuery('comments', getComment)
   const [selectedItemReplay, setSelectedItemReplay] = useState('')
 
   const commentHandler = async (e, selectedItemReplay) => {

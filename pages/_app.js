@@ -17,7 +17,6 @@ export default function App(props) {
         defaultOptions: {
           queries: {
             refetchOnWindowFocus: false,
-            retry: false,
             refetchOnReconnect: false,
           },
         },
