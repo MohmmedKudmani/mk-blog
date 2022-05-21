@@ -2,8 +2,6 @@ import dbConnect from '../../lib/dbConnect'
 import Comment from '../../models/commentModel'
 
 async function handler(req, res) {
-  await dbConnect()
-
   if (req.method !== 'GET') {
     return res.status(200).json({
       message: 'Wrong Request',
@@ -11,9 +9,7 @@ async function handler(req, res) {
     })
   }
 
-  const comments = await Comment.find()
-
-  res.status(200).json({ message: 'Your Comments is here', comments: comments })
+  res.status(200).json({ message: 'Your Comments is here' })
 }
 
 export default handler
