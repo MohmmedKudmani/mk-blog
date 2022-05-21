@@ -20,7 +20,7 @@ async function handler(req, res) {
 
     if (commentsNumber === 3) {
       return res.status(200).json({
-        message: "You Can't Have More Than Three Comments",
+        message: "You can't have more than three comments",
         error: true,
       })
     }
