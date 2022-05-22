@@ -1,9 +1,9 @@
 import { Box, Container } from '@mantine/core'
 import Card from '../util/Card'
-// import dynamic from 'next/dynamic'
-// const CardFeatured = dynamic(() => import('../util/CardFeatured'), {
-//   loading: () => <p>loading...</p>,
-// })
+import dynamic from 'next/dynamic'
+const CardFeatured = dynamic(() => import('../util/CardFeatured'), {
+  loading: () => <p>loading...</p>,
+})
 
 function Hero(props) {
   const { posts } = props
@@ -20,7 +20,7 @@ function Hero(props) {
         })}
       >
         <Container px='xl' size='1550px'>
-          {/* <CardFeatured posts={posts} /> */}
+          <CardFeatured posts={posts} />
           <Card posts={posts} />
         </Container>
       </Box>
